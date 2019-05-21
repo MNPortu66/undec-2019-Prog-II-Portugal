@@ -15,6 +15,7 @@ class TestPersona {
 		String dni = "12345678";
 		
 		//Act
+		//esto es un comentario para git
 		
 		Persona p = new Persona(apellido, nombre, dni);
 //		p.setApellido("Gonzalez");
