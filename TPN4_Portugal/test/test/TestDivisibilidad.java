@@ -8,6 +8,7 @@ import dominio.Divisibilidad;
 
 class TestDivisibilidad {
 //este es un comentario para github
+//este es otro comentario para github	
 	@Test
 	void test01DivisiblePorDos_NoValido() {
 		//Arrange
