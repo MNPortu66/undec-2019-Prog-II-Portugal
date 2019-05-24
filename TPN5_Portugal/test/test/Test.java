@@ -75,4 +75,34 @@ class Test {
 		assertEquals(true, actual02 );
 	
 	}
+	void test05() {
+		//Arrange
+		Carrera c01 = new Carrera("Licienciatura En Sistemas", "Lic. Sist.", "071/08");
+		Materia m01 = new Materia("Algoritmo y Estrucuturas de Datos", "Alg. y Est. de Datos", AnioAcademico.I );
+		String listadoMaterias [] = {"Algoritmo y Estrucuturas de Datos"};
+		//Act
+		boolean actual01 = c01.addMateria(m01);
+		String [] actual02 = c01.getMaterias(AnioAcademico.I);
+				
+		//Assert
+		assertEquals(true, actual01 );
+		assertEquals(listadoMaterias, actual02 );
+	
+	}	
+	void test06() {
+		//Arrange
+		Carrera c01 = new Carrera("Licienciatura En Sistemas", "Lic. Sist.", "071/08");
+		Materia m01 = new Materia("Algoritmo y Estrucuturas de Datos", "Alg. y Est. de Datos", AnioAcademico.I );
+		String listadoMaterias [] = {"Algoritmo y Estrucuturas de Datos"};
+		//Act
+		boolean actual01 = c01.addMateria(m01);
+		boolean actual02 = c01.addMateria(m01);
+		String [] actual03 = c01.getMaterias(AnioAcademico.I);
+				
+		//Assert
+		assertEquals(true, actual01 );
+		assertEquals(false, actual02 );
+		assertEquals(listadoMaterias, actual03 );
+	
+	}
 }
