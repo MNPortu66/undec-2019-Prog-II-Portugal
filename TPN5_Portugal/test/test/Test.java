@@ -147,8 +147,8 @@ class Test {
 		Alumno a03 = new Alumno("Guillermo", "Cerezo", "38480222", "190318", "Licenciatura en Sistemas");
 		Alumno a04 = new Alumno("Guillermo", "Cerezo", "38480222", "190313", "Licenciatura en Enfermeria");
 		Alumno [] listadoDeAlumnos = {a01, a03};
-		ImplementacioDeCarrera imp01 = new ImplementacionDeCarrera(m01, anioCalendario, fechaInicio, fechaFin, listadoDeAlumnos);
-		
+		ImplementacioDeCarrera imp01 = new ImplementacionDeCarrera(m01, "2019", "12/08", "12/12", listadoDeAlumnos);
+		String carreraEsperada = "Licenciatura en Sistemas";
 		
 		String listadoMaterias [] = {"Algoritmo y Estrucuturas de Datos"};
 		//Act
@@ -161,8 +161,8 @@ class Test {
 		//Assert
 		assertEquals(true, actual01 );
 		assertEquals(false, actual02 ); 
-		assertArrayEquals("Licenciatura en Sistemas", actual03);
-		assertArrayEquals("Licenciatura en Sistemas", actual04);
+		assertArrayEquals(carreraEsperada, actual03);
+		assertArrayEquals(carreraEsperada, actual04);
 	
 	}
 
