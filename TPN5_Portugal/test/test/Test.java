@@ -9,6 +9,7 @@ import dominio.AnioAcademico;
 import dominio.Carrera;
 import dominio.ImplementacionDeMateria;
 import dominio.Materia;
+import dominio.TipoDNI;
 
 class Test {
 
@@ -140,15 +141,15 @@ class Test {
 		Materia m01 = new Materia("Programacion II", "Prog. II", AnioAcademico.III);
 		String fechaInicio = "12/08";
 		String fechaFin = "12/12";
-		String anioCalendario = "2019";
+		int anioCalendario = 2019;
 		Alumno [] listadoDeAlumnos = null;
-		ImplementacionDeMateria imp01 = new ImplementacionDeMateria(m01, anioCalendario, fechaInicio, fechaFin, null);
+		ImplementacionDeMateria imp01 = new ImplementacionDeMateria(m01, anioCalendario, fechaInicio, fechaFin);
 		
 		
 		//Act
 		
 		Materia actual01 = imp01.getMateria();
-		String actual02 = imp01.getAnioCalendario();
+		int actual02 = imp01.getAnioCalendario();
 		String actual03 = imp01.getfechaInicio();
 		String actual04 = imp01.getfechaFin();
 		Alumno [] actual05 = imp01.getListadoAlumnos();
@@ -164,28 +165,29 @@ class Test {
 	@org.junit.jupiter.api.Test
 	void test08() {//Punto h) del practico
 		//Arrange
+		Carrera c01 = new Carrera("Licienciatura En Sistemas", "Lic. Sist.", "071/08");
+		Carrera c02 = new Carrera("Licienciatura En Enfermeria", "Lic. Enfer.", "012/08");
 		Materia m01 = new Materia("Algoritmo y Estrucuturas de Datos", "Alg. y Est. de Datos", AnioAcademico.I );
-		Alumno a01 = new Alumno("Matias", "Portugal", "38480366", "190317", "Licenciatura en Sistemas");
-		Alumno a02 = new Alumno("Matias", "Portugal", "38480366", "190317", "Licenciatura en Sistemas");
-		Alumno a03 = new Alumno("Guillermo", "Cerezo", "38480222", "190318", "Licenciatura en Sistemas");
-		Alumno a04 = new Alumno("Guillermo", "Cerezo", "38480222", "190313", "Licenciatura en Enfermeria");
+		Alumno a01 = new Alumno("Matias", "Portugal",TipoDNI.DU, 38480366,190317, c01);
+		Alumno a02 = new Alumno("Matias", "Portugal",TipoDNI.DU, 38480366,190317, c01);
+		Alumno a03 = new Alumno("Guillermo", "Cerezo",TipoDNI.DU, 38480222, 190318, c01);
+		Alumno a04 = new Alumno("Guillermo", "Cerezo",TipoDNI.DU, 38480222, 190319, c02);
 		Alumno [] listadoDeAlumnos = {a01, a03};
-		ImplementacioDeCarrera imp01 = new ImplementacionDeCarrera(m01, "2019", "12/08", "12/12", listadoDeAlumnos);
-		String carreraEsperada = "Licenciatura en Sistemas";
-		
-		String listadoMaterias [] = {"Algoritmo y Estrucuturas de Datos"};
+		Carrera carreraEsperada01 = c01;
+		Carrera carreraEsperada02 = c02;
 		//Act
+		ImplementacionDeMateria imp01 = new ImplementacionDeMateria(m01, 2019, "12/08", "12/12");
 		boolean actual01 = imp01.addAlumno(a01);
 		boolean actual02 = imp01.addAlumno(a02);
-		String actual03 = a01.getCarrera();
-		String actual04 = a04.getCarrera();
-
+		Carrera actual03 = a01.getCarrera();
+		Carrera actual04 = a04.getCarrera();
+		
 				
 		//Assert
 		assertEquals(true, actual01 );
 		assertEquals(false, actual02 ); 
-		assertArrayEquals(carreraEsperada, actual03);
-		assertArrayEquals(carreraEsperada, actual04);
+		assertEquals(carreraEsperada01, actual03);
+		assertEquals(carreraEsperada02, actual04);
 	
 	}
 
