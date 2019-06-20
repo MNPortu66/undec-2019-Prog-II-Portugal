@@ -3,6 +3,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import dominio.Fecha;
+
 class TestFecha {
 
 	/**
@@ -13,15 +15,15 @@ class TestFecha {
 	void test01() {
 		//Arrange
 		int fechaEsperadaDia = 15;
-		int fechaEsperadaMes = 15;
-		int fechaEsperadaAnio = 15;
+		int fechaEsperadaMes = 12;
+		int fechaEsperadaAnio = 2015;
 		Fecha fecha1 = new Fecha(fechaEsperadaDia, fechaEsperadaMes, fechaEsperadaAnio);
 
 		
 		//Act
-		int actual01 = fecha1.getFechaDia();
-		int actual02 = fecha1.getFechaMes();
-		int actual03 = fecha1.getFechaAnio();
+		int actual01 = fecha1.getDia();
+		int actual02 = fecha1.getMes();
+		int actual03 = fecha1.getAnio();
 		
 		//Assert
 		assertEquals(fechaEsperadaDia,actual01);
@@ -41,9 +43,9 @@ class TestFecha {
 		Fecha fecha1 = new Fecha(15, 4, 2019);
 		Fecha fecha2 = new Fecha(1, 1,2019 );
 		Fecha fecha3 = new Fecha(9, 6, 2019);
-		String fechaEsperada01 = "15/4/19";
-		String fechaEsperada02 = "01/1/19";
-		String fechaEsperada03 = "09/4/19";
+		String fechaEsperada01 = "15/04/19";
+		String fechaEsperada02 = "01/01/19";
+		String fechaEsperada03 = "09/06/19";
 		
 		//Act
 		String actual01 = fecha1.getFechaCorta();
@@ -79,18 +81,18 @@ class TestFecha {
 		String fechaEsperada01 = "01/01/1900";
 		
 		//Act
-		String actual01 = fecha01.validarFechaDias();
-		String actual02 = fecha02.validarFechaDias();
-		String actual03 = fecha03.validarFechaDias();
-		String actual04 = fecha04.validarFechaDias();
-		String actual05 = fecha05.validarFechaDias();
-		String actual06 = fecha06.validarFechaDias();		
-		String actual07 = fecha07.validarFechaDias();
-		String actual08 = fecha08.validarFechaDias();
-		String actual09 = fecha09.validarFechaDias();
-		String actual10 = fecha10.validarFechaDias();
-		String actual11 = fecha11.validarFechaDias();
-		String actual12 = fecha12.validarFechaDias();
+		String actual01 = fecha01.getFechaCorta();
+		String actual02 = fecha02.getFechaCorta();
+		String actual03 = fecha03.getFechaCorta();
+		String actual04 = fecha04.getFechaCorta();
+		String actual05 = fecha05.getFechaCorta();
+		String actual06 = fecha06.getFechaCorta();		
+		String actual07 = fecha07.getFechaCorta();
+		String actual08 = fecha08.getFechaCorta();
+		String actual09 = fecha09.getFechaCorta();
+		String actual10 = fecha10.getFechaCorta();
+		String actual11 = fecha11.getFechaCorta();
+		String actual12 = fecha12.getFechaCorta();
 		
 		//Assert
 		assertEquals(fechaEsperada01,actual01);
@@ -116,18 +118,18 @@ class TestFecha {
 	@Test
 	void test04() {
 		//Arrange
-		Fecha fecha01 = new Fecha(30, 1,2003);
-		Fecha fecha02 = new Fecha(28, 2, 2004 );
-		Fecha fecha03 = new Fecha(31, 5, 2005);
-		Fecha fecha04 = new Fecha(1, 12, 2012);
+		Fecha fecha01 = new Fecha(30, 13,03);
+		Fecha fecha02 = new Fecha(28, 500, 04 );
+		Fecha fecha03 = new Fecha(31, -6, 05);
+		Fecha fecha04 = new Fecha(1, 0, 12);
 		
 		String fechaEsperada01 = "01/01/1900";
 		
 		//Act
-		String actual01 = fecha01.validarFechaMeses();
-		String actual02 = fecha02.validarFechaMeses();
-		String actual03 = fecha03.validarFechaMeses();
-		String actual04 = fecha04.validarFechaMeses();
+		String actual01 = fecha01.getFechaCorta();
+		String actual02 = fecha02.getFechaCorta();
+		String actual03 = fecha03.getFechaCorta();
+		String actual04 = fecha04.getFechaCorta();
 		
 		//Assert
 		assertEquals(fechaEsperada01,actual01);
@@ -149,8 +151,8 @@ class TestFecha {
 		Fecha fecha04 = new Fecha(1, 12, 2012);		
 		
 		//Act
-		boolean actual01 = fecha01.Equals(fecha03);
-		boolean actual02 = fecha01.Equals(fecha02);
+		boolean actual01 = fecha01.equals(fecha03);
+		boolean actual02 = fecha01.equals(fecha02);
 		
 		//Assert
 		assertEquals(true,actual01);

@@ -4,6 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import dominio.Fecha;
+import dominio.Precio;
+import dominio.Producto;
+
 class TestProducto {
 
 	/**}
@@ -102,8 +106,6 @@ class TestProducto {
 		assertEquals(true, actual02);
 		assertEquals(true, actual03);
 		
-		
-		
 	}
 	
 	/**}
@@ -113,15 +115,32 @@ class TestProducto {
 	@Test
 	void test04() {
 		//Arrange
+		Fecha fechaDesde01 = new Fecha (01,3,2001);
+		Fecha fechaHasta01 = new Fecha (15,3,2001);
 		
+		Fecha fechaDesde02 = new Fecha (10,3,2001);
+		Fecha fechaHasta02 = new Fecha (31,3,2001);
+		
+		Fecha fechaDesde03 = new Fecha (01,4,2001);
+		Fecha fechaHasta03 = new Fecha (15,4,2001);
+		
+		Precio p01 = new Precio(12.2, fechaDesde01, fechaHasta01);
+		Precio p02 = new Precio(15.2, fechaDesde02, fechaHasta02);
+		Precio p03 = new Precio(105.5, fechaDesde03, fechaHasta03);
+		
+		Producto producto01 = new Producto (nombreEsperado, codigoEsperado);
 		
 		//Act
-		
+		boolean actual01 producto01.addNuevoPrecio(p01);
+		boolean actual02 producto01.addNuevoPrecio(p02);
+		boolean actual03 producto01.addNuevoPrecio(p03);
 		
 		//Assert
-		
-		
-	}
+		assertEquals(true, actual01);
+		assertEquals(false, actual02);
+		assertEquals(true, actual03);
+
+}
 	
 	/**}
 	 * Validar que el método removeLastPrecio elimine adecuadamente los precios.
@@ -130,15 +149,36 @@ class TestProducto {
 	@Test
 	void test05() {
 		//Arrange
+		Fecha fechaDesde01 = new Fecha (01,3,2001);
+		Fecha fechaHasta01 = new Fecha (15,3,2001);
 		
+		Fecha fechaDesde02 = new Fecha (16,3,2001);
+		Fecha fechaHasta02 = new Fecha (31,3,2001);
+		
+		Fecha fechaDesde03 = new Fecha (01,4,2001);
+		Fecha fechaHasta03 = new Fecha (15,4,2001);
+		
+		Precio precioEsperado01 = new Precio(12.2, fechaDesde01, fechaHasta01);
+		Precio precioEsperado02 = new Precio(15.2, fechaDesde02, fechaHasta02);
+		Precio precioEsperado03 = new Precio(123.5, fechaDesde03, fechaHasta03);
+		
+		Producto producto01 = new Producto (nombreEsperado, codigoEsperado);
 		
 		//Act
+		producto01.addNuevoPrecio(precioEsperado01);
+		actual01 = producto01.getLastPrecio;
 		
+		producto01.addNuevoPrecio(precioEsperado02);
+		actual02 = producto01.getLastPrecio;
+		
+		producto01.addNuevoPrecio(precioEsperado03);
+		producto01.removeLastPrecio();
+		actual03 = producto01.getLastPrecio;
 		
 		//Assert
-		
-		
-		
+		assertEquals(precioEsperado01, actual01);
+		assertEquals(precioEsperado02, actual02);
+		assertEquals(precioEsperado03, actual02);	
 	}
 
 }
